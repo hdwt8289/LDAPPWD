@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style type="text/css">
+        html, body {
+            /*  margin: 1px!important;  */
+            height: auto;
+            font-family: "Helvetica Neue", Helvetica, "Lucida Grande", "Luxi Sans", Arial, "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei Mono", LiGothicMed;
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .home-body {
+            background-color: #F7F7F7;
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+        }
+
+        .hide {
+            display: none;
+        }
+
+        p {
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+        }
+
+        a:active {
+            background: none;
+        }
+
+        input {
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            outline: none;
+        }
+
+        ul {
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            padding: 0;
+            margin: 0;
+            font-size: 0;
+        }
+
+        li {
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            list-style: none;
+        }
+
+        div {
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+        }
+        body {
+            margin: 0px;
+        }
+        .header {
+            height: 119px;
+            text-align: center;
+        }
+        .header img {
+            margin: 34px auto;
+        }
+        section {
+            background-image:linear-gradient(-141deg, #ee2351 0%, #c00059 100%);
+            height: auto;
+            text-align: center;
+            padding: 65px 10px;
+        }
+        section >div {
+            font-size:24px;
+        }
+        .title {
+            text-align: center;
+        }
+        .title p {
+            text-align: center;
+            color:#ffffff;
+        }
+        ul {
+            list-style-type: none !important;
+            margin: 0px !important;
+            padding: 0px !important;
+        }
+        ul li {
+            list-style-type: none !important;
+            margin-top: 10px;
+        }
+        ul li div {
+            width: 473px;
+            margin: 0 auto;
+            background-image: url("{{hubUrl}}/img/email/bg.png");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            padding: 31px 47px;
+        }
+        section {
+            position: relative;
+        }
+        section .bg-top {
+            width: 513px;
+            position: absolute;
+            top: -100px;
+            right: 0px;
+        }
+        section .bg-bottom {
+            width: 513px;
+            transform: scaleX(-1);
+            position: absolute;
+            bottom: -61px;
+            left: 0px;
+        }
+        section .content h3 {
+            font-size:20px;
+            color:#676767;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #ffd6d6;
+        }
+        section .content p {
+            font-size:24px;
+            color:#dd1654;
+            line-height:20px;
+            text-align: left;
+            margin: 20px 0;
+        }
+        section .content p span:first-child {
+            display: inline-block;
+            width: 120px;
+        }
+        section .content .tip {
+            color: #FFFFFF;
+            width: 547px;
+            font-size:14px;
+            text-align: left;
+            margin-bottom: 0px;
+            margin: auto;
+        }
+        section .content .login-tip {
+            color: #FFFFFF;
+            width: 547px;
+            font-size:14px;
+            text-align: left;
+            /*margin: 45px 0px;*/
+            margin: 45px auto 65px auto;
+        }
+
+        .help {
+            font-size:14px;
+            color:#ffffff;
+            margin: 21px 0px;
+        }
+
+        hr {
+            background: #d1d1d1;
+            width: 80%
+        }
+        .inscribe {
+            width: 80%;
+            text-align: left;
+            font-size:14px;
+            color:#ffffff;
+            margin: 60px auto;
+        }
+
+        footer {
+            width: 100%;
+            height: 119px;
+            padding: 22px 0px;
+            background:#2d2a3f;
+        }
+        footer p {
+            font-size:14px;
+            color:rgba(255,255,255,0.50);
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{hubUrl}}/img/email/logo.png" alt="">
+    </div>
+    <section>
+       <img class="bg-top" src="{{hubUrl}}/img/email/biggb.png" alt="">
+        <img class="bg-bottom" src="{{hubUrl}}/img/email/biggb.png" alt="">
+        <div class="title">
+            <img src="{{hubUrl}}/img/email/Combined.png" alt="">
+            <p>{{adminName}}您好，您使用手机号{{adminTel}}注册企业成功</p>
+        </div>
+        <div class="content">
+            <ul>
+                <li>
+                    <div>
+                        <h3>企业信息</h3>
+                        <p>
+                            <span>企业名称:</span><label>{{name}}</label>
+                        </p>
+                        <p>
+                            <span>企业域名:</span><label>{{website}}</label>
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3>管理员信息</h3>
+                        <p>
+                            <span>手机号:</span><label>{{adminTel}}</label>
+                        </p>
+                        <p>
+                            <span>邮箱:</span><label>{{adminEmail}}</label>
+                        </p>
+                        <p>
+                            <span>密码:</span><label>{{adminPass}}</label>
+                        </p>
+                    </div>
+                </li>
+                <li class="user">
+                    <p class="tip">我们还为你的企业创建了第一个用户</p>
+                    <div>
+                        <h3>用户信息</h3>
+                        <p>
+                            <span>用户名称:</span><label>{{adminName}}</label>
+                        </p>
+                        <p>
+                            <span>邮箱:</span><label>{{adminEmail}}</label>
+                        </p>
+                        <p>
+                            <span>手机号:</span><label>{{adminTel}}</label>
+                        </p>
+                        <p>
+                            <span>密码:</span><label>{{userPass}}</label>
+                        </p>
+                    </div>
+                    <p class="login-tip">可以使用以上信息登录红红芯企业浏览器</p>
+                </li>
+            </ul>
+        </div>
+        <p class="help">
+            如果您需要更多帮助，请联系客服 400-069-0309
+        </p>
+        <hr>
+        <div class="inscribe">
+            <p>此致</p>
+            <p>红芯团队</p>
+        </div>
+    </section>
+    <footer>
+        <p>
+            此为系统邮件，请勿回复
+        </p>
+        <p>
+            ©2018 AllMobilize Inc.
+        </p>
+        <p>
+            美通云动（北京）科技有限公司| 京ICP备13033158
+        </p>
+    </footer>
+</body>
+</html>

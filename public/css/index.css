@@ -1,0 +1,315 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+}
+html,body{
+    height:100%;
+}
+body{
+    background: url(../images/background2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    min-height:700px;
+    min-width: 1000px;
+}
+#butPanel{
+    width:90px;
+    height:610px;
+    position:absolute;
+    left:-200px;
+    top:80px;
+    z-index: 1000;
+}
+.opacityPage{
+    width:100%;
+    height:100%;
+    background:#FFF;
+    opacity:0.1;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+    border-radius: 0 10px 10px 0;
+}
+.realPage{
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:2;
+    box-shadow: 0 1px 3px #999;
+    border-radius: 0 10px 10px 0;
+    padding:40px 10px;
+}
+.butUl{
+    width:100%;
+}
+.butUl li{
+    display:block;
+    width:100%;
+    height:80px;
+    text-align: center;
+    margin-bottom:10px;
+    padding:5px;
+    cursor:pointer;
+}
+.liPic{
+    display:block;
+    width:40px;
+    height:40px;
+    background-size: 100% 100%;
+    margin:0 auto;
+    transition: all 500ms ease;
+    margin-bottom:5px;
+}
+li[data-name=view] .liPic{
+    background-image: url('../images/1but.png');
+}
+li[data-name=business] .liPic{
+    background-image: url('../images/2but.png');
+}
+li[data-name=system] .liPic{
+    background-image: url('../images/3but.png');
+}
+li[data-name=count] .liPic{
+    background-image: url('../images/4but.png');
+}
+li[data-name=user] .liPic{
+    background-image: url('../images/5but.png');
+}
+li[data-name=base] .liPic{
+    background-image: url('../images/6but.png');
+}
+.liPic:hover{
+    transform: scale(1.1);
+}
+.liText{
+    width:100%;
+    color:#FFF;
+    font-size: 14px;
+}
+.liSelect{
+    box-shadow:inset 0 0 6px rgba(0,191,255,0.8);
+    border-radius: 10px;
+}
+#infoPanel{
+    width:700px;
+    height:80px;
+    position:absolute;
+    left:10px;
+    bottom:-200px;
+    z-index: 1000;
+}
+#infoPanel .opacityPage{
+    background:deepskyblue;
+    border-radius: 0 0 200px 5px;
+}
+#infoPanel .realPage{
+    padding: 5px;
+    box-shadow: 0 0 3px #77DDFF;
+    border-radius: 0 0 200px 5px;
+    position:relative;
+}
+.infoLeft{
+    padding-right:10px;
+    width:120px;
+    height:100%;
+    text-align:center;
+    border-right:1px solid rgba(0,191,255,0.3);
+    float:left;
+    font: bold 19px/100% "微软雅黑", "Lucida Grande", "Lucida Sans", Helvetica, Arial, Sans;
+    color: #fff;
+    text-shadow: 0 0 20px red;
+    line-height: 32px;
+}
+.infoRight{
+    float:left;
+    width:530px;
+    height:100%;
+    padding-left:10px;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+.infoRightTable{
+    width:100%;
+    height:100%;
+    position:relative;
+    display:table;
+}
+.infoRightCell{
+    height:100%;
+    padding-left:10px;
+    position:relative;
+    display:table-cell;
+    vertical-align: middle;
+}
+#logout{
+    width:50px;
+    height:50px;
+    position:fixed;
+    top:0;
+    right:0;
+    background:rgba(255,255,255,0.2);
+    border-radius: 50%;
+    box-shadow: 0 0 5px #FFF;
+    cursor:pointer;
+    padding:10px;
+    transform: translate(50%,-50%) rotate(0deg);
+    transition: all ease 500ms;
+    z-index:9;
+}
+#logout:hover{
+    transform: translate(0,0) rotate(360deg);
+}
+#logoutPic{
+    width:60px;
+    height:60px;
+    background:url(../images/wrong.png) no-repeat;
+}
+.redInfoDiv{
+    width:470px;
+    margin-left:20px;
+    padding:2px 4px;
+    font-size: 14px;
+    color:orangered;
+    display: none;
+}
+.redInfoDiv li{
+    margin-bottom:2px;
+    position:relative;
+}
+.redInfoOk{
+    width:30px;
+    height:30px;
+    position:absolute;
+    top:-2px;
+    right:2px;
+    background:url(../images/redOk1.png) no-repeat;
+    cursor:pointer;
+    transform: scale(0.8);
+    opacity: 0.4;
+    transition:transform ease 200ms ;
+}
+.redInfoOk:hover{
+    opacity: 1;
+    transform: scale(1);
+}
+
+/*滚动条*/
+::-webkit-scrollbar {
+    width: 8px;
+    height:0;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+} /* 滚动条的滑轨背景 */
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+} /* 滑块 */
+::-webkit-scrollbar-button {
+    background-color: transparent;
+    display:none;
+} /* 滑轨两头的监听按钮 */
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+} /* 横向滚动条和纵向滚动条相交处尖角*/
+
+
+.mobilePanel{
+width:55px;
+height:70px;
+background:url(../images/ipad.png) no-repeat;
+background-size: cover;
+position:fixed;
+top:50%;
+left:50%;
+margin-top:-35px;
+margin-left:-27px;
+animation: mobileMove 300ms;
+}
+@keyframes mobileMove {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-4px);}
+    20%, 40%, 60%, 80% {transform: translateX(4px);}
+}
+
+iframe{
+    width:100%;
+    height:100%;
+    border:0;
+    margin:0;
+    padding:0;
+}
+
+#round{
+    width:30px;
+    height:30px;
+    border:2px solid rgba(32,138,243,0.8);
+    border-radius:50%;
+    cursor:move;
+    position:fixed;
+    top:25px;
+    left:-40px;
+    z-index: 9999;
+}
+.roundAnimation{
+    border:2px dashed rgba(32,138,243,0.8) !important;
+    animation:roundA 2s infinite;
+}
+@keyframes roundA{
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+.roundLine{
+    position:absolute;
+    top:11px;
+    right:2px;
+    width:0;
+    height:2px;
+    background:rgba(32,138,243,0.8);
+    transition: all ease 1s;
+}
+.roundLine::before{
+    content:'';
+    border: 8px solid transparent;
+    border-right:15px solid rgba(32,138,243,0.8);
+    position:absolute;
+    top:-6px;
+    left:-28px;
+}
+.roundLineShow{
+    right:26px;
+    width:660px;
+}
+.roundLineShow::before{
+    content:'';
+    border: 8px solid transparent;
+    border-right:20px solid rgba(32,138,243,0.8);
+    position:absolute;
+    top:-7px;
+    left:-28px;
+}
+.roundPanel{
+    position:absolute;
+    top:13px;
+    right:60px;
+    width:600px;
+    height:0;
+    background:url(../images/background4.jpg) no-repeat;
+    background-size: cover;
+    opacity:0.5;
+    transition:all ease 1s;
+    box-shadow: 0 1px 1px rgba(255,255,255,0.7);
+}
+.roundCover{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 9988;
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>管理员登陆</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <!--[if lte IE 9]>
+        <style>
+            body *{display:none;}
+            #ie10Lower{display:block !important;padding:100px;color:#FFF;font-size: 25px;text-align: center;}
+        </style>
+        <![endif]-->
+</head>
+
+<body>
+    <!--ie10以下提示-->
+    <p id="ie10Lower" style="display: none;">不支持ie10以下浏览器，安装360、chrome、ie11中的一个后再来试试吧</p>
+
+    <div id="wrapper">
+        <div id="panelOut">
+            <div id="panel" onselectstart="return false;">
+                <div id="titleDiv">
+                    <span>请输入用户名及密码</span>
+                </div>
+                <div id="formDiv">
+                    邮箱:<div class="textDiv">
+                        <div class="icon1" title="登录名"></div>
+                        <input type="text" id="loginName" />
+                    </div>
+                    密码:<div class="textDiv">
+                        <div class="icon2" title="密码"></div>
+                        <input type="text" id="userPwd" onfocus="this.type='password'"  />
+                    </div>
+                    <div id="showInfo"></div>
+                </div>
+                <div id="footDiv">
+                    <div class="submit" onselectstart="return false;" id="change">
+                        <div class="icon3"></div>确定
+                    </div>
+                    <div class="cancel" onselectstart="return false;" id="cancel">
+                        <div class="iconcancel"></div>取消
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/jquery-1.11.3.js"></script>
+    <!-- <script type="text/javascript" src="../js/update.js"></script> -->
+    <script>
+        $('#loginName').focus();
+        $('.icon1,.icon2').click(function () {
+            $(this).siblings('input').focus();
+        });
+        $('input').change(function () {
+            if ($.trim($(this).val())) {
+                $(this).parent().removeClass('redColor');
+                $('#showInfo').fadeOut().text('');
+            }
+        });
+
+        //键盘监听回车提交
+        $(document).keyup(function (event) {
+            switch (event.keyCode) {
+                case 13:
+                    $('.submit').css({ top: '22px', right: '29px' });
+                    setTimeout(function () {
+                        $('.submit').css({ top: '20px', right: '30px' });
+                    }, 50);
+                    $('.submit').click();
+            }
+        });
+        //点击提交
+        $('#change').click(function () {
+            submit();
+        });
+        //点击取消
+        $('#cancel').click(function () {
+            window.location.href = '/login';
+        });
+        //后台交互验证用户密码
+        function submit() {
+             debugger;
+            var name = $.trim($('#loginName').val());
+            var userPwd = $.trim($('#userPwd').val());
+            if (!name) {
+                $('#loginName').parent().addClass('redColor');
+                $('#loginName').parent().addClass('justShake');
+                setTimeout(function () {
+                    $('#loginName').parent().removeClass('justShake');
+                }, 400);
+                $('#showInfo').text('请填写用户登陆名！').fadeIn();
+                $('#loginName').focus();
+                return;
+            }
+            if (!userPwd) {
+                $('#userPwd').parent().addClass('redColor');
+                $('#userPwd').parent().addClass('justShake');
+                setTimeout(function () {
+                    $('#userPwd').parent().removeClass('justShake');
+                }, 400);
+                $('#showInfo').text('请填写原始密码！').fadeIn();
+                $('#userPwd').focus();
+                return;
+            }
+        
+            var json = { name: name, userPwd: userPwd };
+
+            $.post('/login', json, function (data) {
+                debugger;
+                var status = data.status;
+                console.log(status);
+                switch (status) {
+                    case 'err':
+                        $('#panel').addClass('justShake1');
+                        setTimeout(function () {
+                            $('#panel').removeClass('justShake1');
+                        }, 400);
+                        $('#showInfo').text('登陆出错，请联系管理员！').fadeIn();
+                        break;
+                    case 'noUser':
+                        $('#panel').addClass('justShake1');
+                        setTimeout(function () {
+                            $('#panel').removeClass('justShake1');
+                        }, 400);
+                        $('#showInfo').hide().text('用户不存在！').fadeIn();
+                        break;
+                    case 'wrongPassword':
+                        $('#panel').addClass('justShake1');
+                        setTimeout(function () {
+                            $('#panel').removeClass('justShake1');
+                        }, 400);
+                        $('#showInfo').hide().text('用户名或者密码错误！').fadeIn();
+                        $('#oldPwd').focus();
+                        break;
+                    case 'success':
+                        window.location.href = '/send';
+                        //alert("Success!");
+                        break;
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+.lamp{
+	width:1000px;
+	padding:5px;
+}
+.lamp li{
+	width:30px;
+	height:30px;
+	display:block;
+	float:left;
+	padding:5px;
+}
+.lamp li div{
+	width:100%;
+	height:100%;
+	border-radius:50%;
+	box-shadow: 0 0 5px #77DDFF inset;
+}
+
+.lampMove{
+	animation: myLampChange 2s steps(1) infinite;
+}
+@keyframes myLampChange {
+	0% {margin-left:-100px;}
+	10% {margin-left:-70px;}
+	20% {margin-left:-40px;}
+	30% {margin-left:-10px;}
+	40% {margin-left:20px;}
+	50% {margin-left:50px;}
+	60% {margin-left:80px;}
+	70% {margin-left:110px;}
+	80% {margin-left:140px;}
+	90% {margin-left:170px;}
+	100% {margin-left:200px;}
+}
+.lampPanelIn{
+	width:510px;
+	overflow:hidden;
+	margin-left:-202px;
+}
+.lampPanelOut{
+	width:210px;
+	overflow:hidden;
+	position:absolute;
+	top:-3px;
+	left:165px;
+}
