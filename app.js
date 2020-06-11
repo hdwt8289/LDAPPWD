@@ -50,9 +50,9 @@ app.use(
 );
 app.use(function(req,res,next){
     let url = req.originalUrl;
-    if(url==='/send'&&!req.session.user){
-        return res.redirect('login');
-    }
+    // if(url==='/send'&&!req.session.user){
+    //     return res.redirect('login');
+    // }
     next();
 })
 

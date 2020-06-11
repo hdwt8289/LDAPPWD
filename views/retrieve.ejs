@@ -190,6 +190,13 @@
                         }, 400);
                         $('#showInfo').text('修改出错，请联系管理员！').fadeIn();
                         break;
+                    case 'perr':
+                        $('#panel').addClass('justShake1');
+                        setTimeout(function () {
+                            $('#panel').removeClass('justShake1');
+                        }, 400);
+                        $('#showInfo').text('数据格式不对，请检查！').fadeIn();
+                        break;
                     case 'noUser':
                         $('#panel').addClass('justShake1');
                         setTimeout(function () {

@@ -42,7 +42,7 @@
                     </div>
                     <div id="showInfo"></div>
                     <div class="fontRed">
-                        注：<br>1.新密码至少包含一个特殊字符(~!@&%$^()#_+?:,{}[])；<br>
+                        注：<br>1.新密码至少包含一个特殊字符(~!@&%$^()#_+?:{}[])；<br>
                         2.新密码至少包含一个大小写字母和数字；<br>
                         3.新密码长度为8~16位。<br>
                         忘记密码?<a href="http://127.0.0.1:8088/retrieve">点这里重置。</a>
@@ -171,6 +171,13 @@
                             $('#panel').removeClass('justShake1');
                         }, 400);
                         $('#showInfo').text('修改出错，请联系管理员！').fadeIn();
+                        break;
+                    case 'perr':
+                        $('#panel').addClass('justShake1');
+                        setTimeout(function () {
+                            $('#panel').removeClass('justShake1');
+                        }, 400);
+                        $('#showInfo').text('数据格式不对，请检查！').fadeIn();
                         break;
                     case 'noUser':
                         $('#panel').addClass('justShake1');

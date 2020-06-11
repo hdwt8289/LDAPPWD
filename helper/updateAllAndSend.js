@@ -16,10 +16,11 @@ module.exports = {
         let d = Q.defer();
         try {
             client.bind('cn=Manager,dc=redcore,dc=cn', config.pwd, function (err) {
-                //console.log('success');
+                console.log('success');
+                console.log(err);
             })
         } catch (error) {
-
+          console.log(error);
         }
         try {
             const opts = {
@@ -32,24 +33,30 @@ module.exports = {
                     let obj = entry.object;
                     const dn = obj.dn;
                     const pwd = obj.userPassword;
-                    if (pwd == config.userPwd) {
-                        const email = obj.mail;
+                    // console.log(obj);
+                    //if (pwd == config.userPwd) {
+                    if (obj.mail.indexOf('redcore')>0) {
+                        // console.log(obj);
+                        const email = obj.mail.replace('redcore','clouddeep');
                         const name = obj.displayName;
                         const user = {
                             name: name,
                             email: email,
-                            domainName: 'redcore.cn',
+                            domainName: 'clouddeep.cn',
                             adminEmail: email,
                             loginName: email
                         }
                         try {
                             let options = generateSendEmailOptions(user);
-                            options.data.password = genNewPwd();
-                            console.log(options.data.password);
+                            // options.data.password = genNewPwd();
+                            // console.log(options.data.password);
+                            // console.log(dn);
+                            console.log(options.data.adminEmail);
                             const change = new ldap.Change({
                                 operation: 'replace',
                                 modification: {
-                                    userPassword: options.data.password
+                                    // userPassword: options.data.password
+                                    mail : options.data.adminEmail
                                 }
                             });
                             client.modify(dn, change, (err) => {
@@ -57,18 +64,19 @@ module.exports = {
                                     console.log(err);
                                     d.reject({ status: 'err' });
                                 } else {
-                                    emailService(options).then(function (result1) {
-                                        d.resolve({ status: 'success' });
-                                    }).catch(function (err) {
-                                        emailSendFailedUsers.push(user);
-                                        d.reject({ status: 'err' });
-                                    });
+                                    console.log('123');
+                                    // emailService(options).then(function (result1) {
+                                    //     d.resolve({ status: 'success' });
+                                    // }).catch(function (err) {
+                                    //     emailSendFailedUsers.push(user);
+                                    //     d.reject({ status: 'err' });
+                                    // });
                                 }
                             });
                         } catch (e) {
                             console.log(e);
                             d.reject({ status: 'err' });
-                        }
+                        } 
                     }
                 });
                 res.on('searchReference', (referral) => {

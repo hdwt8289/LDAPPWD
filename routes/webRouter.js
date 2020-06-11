@@ -8,7 +8,7 @@ var updateController = require('../controlers/index');
 router.get('/update', updateController.update.show);
 router.post('/update', updateController.update.updatePwd);
 router.get('/retrieve', updateController.update.retrieve);
-router.post('/retrieve', updateController.update.retrieve);
+router.post('/retrieve', updateController.update.resetPwd);
 router.get('/cancel', updateController.update.updateCancel);
 router.get('/sms', updateController.update.reqSmsCode);
 router.get('/success', updateController.update.success);

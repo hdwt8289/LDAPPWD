@@ -9,10 +9,10 @@ module.exports = {
     port: "8088",
 
     ////OPENLDAP服务信息
-    url: "ldap://139.219.0.76:389",
-    baseDN: "ou=Redcore,dc=redcore,dc=cn",
-    user: "redcore@redcore.cn",
-    pwd: "Rc@2018#ysp",
+    url: "ldap://:389",
+    baseDN: "ou=new,dc=redcore,dc=cn",
+    user: "123@redcore.cn",
+    pwd: "123",
     isPrivateDevelopment: true,
     defaultFiles: {
         // 新建应用默认图标
