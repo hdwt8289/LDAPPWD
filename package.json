@@ -21,7 +21,7 @@
     "express-mysql-session": "^1.2.3",
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "ioredis": "^4.2.0",
     "joi": "^14.0.4",
     "knuth-shuffle": "^1.0.8",
