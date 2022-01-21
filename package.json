@@ -26,7 +26,7 @@
     "joi": "^14.0.4",
     "knuth-shuffle": "^1.0.8",
     "ldapjs-client": "^0.1.0",
-    "log4js": "^0.6.36",
+    "log4js": "^6.4.0",
     "morgan": "^1.10.0",
     "mysql2": "^1.6.2",
     "node-cmd": "^3.0.0",
