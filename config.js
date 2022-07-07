@@ -37,6 +37,6 @@ module.exports = {
             }
         }
     },
-    manager:"hongbo.zhang@redcore.cn",
-    userPwd:'Rc@20181234'
+    manager:"Mr.zhang@scitop.cn",
+    userPwd:'20181234'
 };
